@@ -123,7 +123,7 @@ function AutoDust.OnUpdate()
 			for i = 1, Heroes.Count() do
                 local TAhero = Heroes.Get(i)
 			    local TA = NPC.GetUnitName(TAhero)=="npc_dota_hero_templar_assassin"
-			    if TA and NPC.IsEntityInRange(hero, TAhero, 1000) and (Entity.GetHealth(TAhero)/Entity.GetMaxHealth(TAhero)<0.3) and not NPC.HasModifier(TAhero, "modifier_truesight") then
+			    if TA and NPC.IsEntityInRange(hero, TAhero, 1000) and (Entity.GetHealth(TAhero)/Entity.GetMaxHealth(TAhero)<0.3) and not NPC.HasModifier(TAhero, "modifier_truesight") and not Entity.IsSameTeam(hero, TAhero) then
 			    Ability.CastNoTarget(dust)	
 			    AutoDust.Sleep(0.1, "updaterate");
 			    end
