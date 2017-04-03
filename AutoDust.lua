@@ -131,12 +131,10 @@ function AutoDust.OnUpdate()
 end
 
 function AutoDust.FindTarget(me, item)
-	--local dagondmg = Ability.GetLevelSpecialValueFor(item, "damage") + Ability.GetLevelSpecialValueFor(item, "damage") * (Hero.GetIntellectTotal(me) / 16 / 100)
 	local entities = Heroes.GetAll()
 	for index, ent in pairs(entities) do
 		local enemyhero = Heroes.Get(index)
 		if not Entity.IsSameTeam(me, enemyhero)  and not NPC.IsIllusion(enemyhero) and NPC.IsEntityInRange(me, enemyhero, 1050) then
-			--local totaldmg = (1 - NPC.GetMagicalArmorValue(enemyhero)) * dagondmg
 			local isNotValid = AutoDust.CheckForModifiers(enemyhero)
 			local isPosValid = AutoDust.CheckForPositiveModifiers(enemyhero)
 			if not isNotValid and isPosValid then return enemyhero end
